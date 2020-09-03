@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NewItemForm } from './NewItemForm';
 import { AddItemButton } from './styles';
 
 interface AddNewItemProps {
@@ -12,7 +13,14 @@ export const AddNewItem = (props: AddNewItemProps) => {
   const { onAdd, toggleButtonText, dark } = props;
 
   if (showForm) {
-    // We show item creation here
+    return (
+      <NewItemForm
+        onAdd={text => {
+          onAdd(text);
+          setShowForm(false);
+        }}
+      />
+    );
   }
 
   return (
